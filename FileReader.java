@@ -1,3 +1,10 @@
+/*
+Class: FileReader
+This class is responsible for reading the file and creating the graph.
+The graph is created based on the adjacency matrix in the file.
+The adjacency matrix is stored in a 2D array.
+Graph class will be call to create the graph.
+*/
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -49,5 +56,4 @@ public class FileReader {
             return false;
         }
     }
-
 }
