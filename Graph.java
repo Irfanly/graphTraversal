@@ -26,6 +26,7 @@ public class Graph {
         source.getEdges().add(edge);
     }
 
+    // Return the list of vertices
     public LinkedList<Vertex> getNodes(){
         return nodes;
     }
@@ -40,14 +41,17 @@ public class Graph {
         return null;
     }
 
-    // Print the graph (For testing purposes)
+    // Print the connections between vertices
     public void printGraph(){
         for(Vertex vertex : nodes){
-            System.out.println(vertex.getName() + " is connected to:");
-            for(Edge edge : vertex.getEdges()){
-                System.out.println(edge.getDestination().getName() + " with weight " + edge.getWeight());
+            //If the vertex has no edges, skip it
+            if(vertex.getEdges().size() > 0) {
+                for (Edge edge : vertex.getEdges()) {
+                    System.out.println("From " + vertex.getName() + " to " + edge.getDestination().getName());
+                    System.out.println("Ticket cost: RM" + edge.getWeight());
+                }
+                System.out.println();
             }
-            System.out.println();
         }
     }
 

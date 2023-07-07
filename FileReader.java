@@ -19,6 +19,14 @@ public class FileReader {
             int size = Integer.parseInt(scanner.nextLine()); // Read the size of the adjacency matrix
             int[][] adjacencyMatrix = new int[size][size]; // Create a 2D array to store the adjacency matrix
 
+            String vertexNames = scanner.nextLine(); // Read the vertex names from the file
+            String[] vertexNamesArray = vertexNames.split(","); // Split the vertex names into an array
+            // Create vertices and add them to the graph
+            for (int i = 0; i < size; i++) {
+                Vertex vertex = new Vertex(vertexNamesArray[i]);
+                graph.addVertex(vertex);
+            }
+
             // Read the adjacency matrix values from the file
             for (int i = 0; i < size; i++) {
                 String line = scanner.nextLine();
@@ -26,14 +34,6 @@ public class FileReader {
                 for (int j = 0; j < size; j++) {
                     adjacencyMatrix[i][j] = Integer.parseInt(lineArray[j]);
                 }
-            }
-
-            String vertexNames = scanner.nextLine(); // Read the vertex names from the file
-            String[] vertexNamesArray = vertexNames.split(","); // Split the vertex names into an array
-            // Create vertices and add them to the graph
-            for (int i = 0; i < size; i++) {
-                Vertex vertex = new Vertex(vertexNamesArray[i]);
-                graph.addVertex(vertex);
             }
 
             // Add edges to the graph based on the adjacency matrix
@@ -50,6 +50,7 @@ public class FileReader {
 
             scanner.close();
             return true;
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
             e.printStackTrace();
